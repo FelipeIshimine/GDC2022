@@ -19,4 +19,3 @@ public class ScenesSettings : RuntimeScriptableSingleton<ScenesSettings>
 
     public static bool Exists(int intValue) => intValue < Instance.levels.Length;
 }
-

@@ -43,8 +43,8 @@ public class StatsManager : RuntimeScriptableSingleton<StatsManager>
 
     [SerializeField,InlineEditor] private StatType maxActionPoints;
     public static StatType MaxActionPoints => Instance.maxActionPoints;
-    
-    
+    [SerializeField,InlineEditor] private StatType handSize;
+    public static StatType HandSize => Instance.handSize;
 
     private static void InitializeDictionary()
     {
@@ -111,4 +111,6 @@ public class StatsManager : RuntimeScriptableSingleton<StatsManager>
     public static StatType GetTypeFromId(string id) => Instance._references.Find(x => x.type.Id == id).type;
 
     public static Dictionary<string, int> CreateDefaultStats() => Instance.playerDefaultStats.Create();
+
+
 }

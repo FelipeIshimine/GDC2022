@@ -1,27 +1,36 @@
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-[RequireComponent(typeof(StatsComponent))]
-public class BattleUnit : MonoBehaviour
+public class BattleUnit
 {
-    [SerializeReference] private StatsComponent statsComponent;
-    
-    
+    public Action<string,int> OnModify;
+    public Dictionary<string, int> Stats;
 
-    
-    public void Initialize()
+    public bool IsDead() => Health == 0;
+
+    #region StatGetters
+    public int ActionPoints => Stats[StatsManager.ActionPoints.Id];
+    public int Health => Stats[StatsManager.Health.Id];
+    public int Attack => Stats[StatsManager.Attack.Id];
+    public int Defense => Stats[StatsManager.Defense.Id];
+    public int HandSize => Stats[StatsManager.HandSize.Id];
+
+    #endregion
+
+    public BattleUnit(StatsPreset statsPreset)
     {
+        Stats = statsPreset.Create();
     }
 
-    public void Terminate()
+    public BattleUnit(Dictionary<string,int> playerDataStats)
     {
-        
+        Stats = new Dictionary<string, int>(playerDataStats);
     }
 
-    private void OnValidate()
-    {
-        if (statsComponent) statsComponent = GetComponent<StatsComponent>();
+    public void Modify(StatType stat, int amount) => Modify(stat.Id, amount);
+
+    public void Modify(string id, int amount)
+    {   
+        OnModify?.Invoke(id, amount);
     }
 }

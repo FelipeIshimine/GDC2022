@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d364a778384b8ba120e42dca9a60c5, type: 3}
+  m_Name: StartingDeck
+  m_EditorClassIdentifier: 
+  coinPairs:
+  - coinPreset: {fileID: 11400000, guid: 1ddfb8455ab6045418dbecfe32708f3e, type: 2}
+    amount: 5
+  - coinPreset: {fileID: 11400000, guid: b12e607674b141d4c870b773c9fb2fe6, type: 2}
+    amount: 5
+  - coinPreset: {fileID: 11400000, guid: e07786e456ffb914caf516d26373dcf9, type: 2}
+    amount: 5
+  - coinPreset: {fileID: 11400000, guid: 725ff2eca9dd32042bf402d007fcf50f, type: 2}
+    amount: 2
+  - coinPreset: {fileID: 11400000, guid: e07786e456ffb914caf516d26373dcf9, type: 2}
+    amount: 2
+  - coinPreset: {fileID: 11400000, guid: eff7351d8af7c4443909e377aa0055bc, type: 2}
+    amount: 2

@@ -16,6 +16,5 @@ MonoBehaviour:
   addressableLabel: RuntimeScriptableSingleton
   elements:
   - {fileID: 11400000, guid: b460e9bc469aecb4794935bae00de5eb, type: 2}
-  - {fileID: 11400000, guid: bf381fd14798bdf468ffbf06a959cee7, type: 2}
-  - {fileID: 11400000, guid: 10233a58643ad0b409a51fa7908b56f8, type: 2}
-  - {fileID: 11400000, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
+  - {fileID: 11400000, guid: 66f92062a5026ca428519aaadf72512b, type: 2}
+  - {fileID: 11400000, guid: 4afe16598ba6511438c5ae2cfe12fcc2, type: 2}

@@ -27,6 +27,26 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - RuntimeScriptableSingleton
+  - m_GUID: 6ed1146fdc896924eade8a6eca7b30c1
+    m_Address: Assets/ScriptableObjects/Managers/DeckManager.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RuntimeScriptableSingleton
+  - m_GUID: bf381fd14798bdf468ffbf06a959cee7
+    m_Address: Assets/ScriptableObjects/Managers/EnemyManager.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RuntimeScriptableSingleton
+  - m_GUID: 10233a58643ad0b409a51fa7908b56f8
+    m_Address: Assets/ScriptableObjects/Managers/ProgressManager.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RuntimeScriptableSingleton
+  - m_GUID: 74c72a5a6399f9d48beb2d865de839b8
+    m_Address: Assets/ScriptableObjects/Managers/StatsManager.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RuntimeScriptableSingleton
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c09c44277a4211348a6376ec87a43a22, type: 2}
   m_SchemaSet:

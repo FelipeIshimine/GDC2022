@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94d364a778384b8ba120e42dca9a60c5, type: 3}
-  m_Name: DeckPreset
+  m_Script: {fileID: 11500000, guid: 64d35174af1343ecacf92c8506590f52, type: 3}
+  m_Name: CoinManager
   m_EditorClassIdentifier: 
-  coins: []
+  loadMode: 2
+  tierValues: 050000000a000000190000003200000064000000

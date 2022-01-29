@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7970dd07ed543f781e127cf9a6db2cd, type: 3}
+  m_Name: 2_Block_Evade
+  m_EditorClassIdentifier: 
+  coin:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: Coin, ns: , asm: Assembly-CSharp}
+      data:
+        tier: 2
+        headEffect:
+          id: 1
+        tailEffect:
+          id: 2
+    00000001:
+      type: {class: BlockEffect, ns: , asm: Assembly-CSharp}
+    00000002:
+      type: {class: EvadeEffect, ns: , asm: Assembly-CSharp}

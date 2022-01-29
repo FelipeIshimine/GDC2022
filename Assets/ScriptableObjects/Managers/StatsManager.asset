@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b5ae6b7a7149789901992ceb5f50d4, type: 3}
   m_Name: StatsManager
   m_EditorClassIdentifier: 
-  loadMode: 2
+  loadMode: 1
   stats:
   - {fileID: 7708355000786580576}
   - {fileID: -8027314935916064939}
@@ -71,8 +71,14 @@ MonoBehaviour:
   - {fileID: -7905272767713572662}
   - {fileID: 3980325890356176691}
   - {fileID: 576064199197138351}
-  speed: {fileID: 0}
-  extractionSpeed: {fileID: 0}
+  playerDefaultStats: {fileID: 11400000, guid: edf964b83f36c284b8148df042a88df3, type: 2}
+  speed: {fileID: 6536988462605587660}
+  attack: {fileID: 7708355000786580576}
+  actionPoints: {fileID: 3980325890356176691}
+  defense: {fileID: -8027314935916064939}
+  health: {fileID: -3547374455472523010}
+  maxHealth: {fileID: -7905272767713572662}
+  maxActionPoints: {fileID: -7905272767713572662}
 --- !u!114 &576064199197138351
 MonoBehaviour:
   m_ObjectHideFlags: 0

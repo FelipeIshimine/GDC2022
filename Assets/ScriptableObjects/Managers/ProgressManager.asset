@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b7de9822d7452abdad941ce0f11d92, type: 3}
   m_Name: ProgressManager
   m_EditorClassIdentifier: 
-  loadMode: 2
+  loadMode: 1

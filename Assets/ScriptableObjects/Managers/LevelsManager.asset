@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837204e20b594cd986ed0c0a601c9336, type: 3}
+  m_Name: LevelsManager
+  m_EditorClassIdentifier: 
+  loadMode: 2
+  battleLevels:
+  - {fileID: 11400000, guid: 9bcd5abe1b3343f4bb15861c35a12ad0, type: 2}
+  - {fileID: 11400000, guid: 9d1f8d70f5932f848bb48df5d03faa1f, type: 2}
+  - {fileID: 11400000, guid: c01476be61faace449c3047ed4f5bc1d, type: 2}

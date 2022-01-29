@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef3b0777def8344a884f3acad891024, type: 3}
   m_Name: EnemyManager
   m_EditorClassIdentifier: 
-  loadMode: 2
+  loadMode: 1
   enemyStats: []

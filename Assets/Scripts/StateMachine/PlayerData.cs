@@ -2,9 +2,9 @@
 
 public class PlayerData
 {
-    public int BattleId;
+    public int LevelId;
     public List<Coin> Deck;
-    public Dictionary<string, int> Stats;
+    public Dictionary<string,int> Stats;
     
     public int ActionPoints => Stats[StatsManager.ActionPoints.Id];
     public int MaxActionPoints => Stats[StatsManager.MaxActionPoints.Id];

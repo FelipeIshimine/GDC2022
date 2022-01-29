@@ -8,59 +8,67 @@ public class CoinDeck
 }
 
 [System.Serializable]
-public abstract class CoinEffect
+public abstract class BattleEffect
 {
-    public abstract void Execute();
     public abstract string Description();
+
+    public abstract void Apply(BattleUnit source, BattleUnit target, int tier);
 }
 
-public class AttackEffect : CoinEffect
+public class AttackEffect : BattleEffect
 {
-    public override void Execute()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override string Description()
     {
         throw new System.NotImplementedException();
     }
+
+    public override void Apply(BattleUnit source, BattleUnit target, int tier)
+    {
+        var attackAmount = source.Attack + CoinManager.TierValues[tier];
+        var defenceAmount = target.Defense;
+
+        int damage = attackAmount - defenceAmount;
+
+        target.Modify(StatsManager.Defense, attackAmount);
+        target.Modify(StatsManager.Health, damage);
+    }
 }
 
-public class BlockEffect : CoinEffect
+public class BlockEffect : BattleEffect
 {
-    public override void Execute()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override string Description()
     {
         throw new System.NotImplementedException();
     }
+    
+    public override void Apply(BattleUnit source, BattleUnit target, int tier)
+    {
+        source.Modify(StatsManager.Defense, CoinManager.TierValues[tier]);
+    }
 }
 
-public class EvadeEffect : CoinEffect
+public class EvadeEffect : BattleEffect
 {
-    public override void Execute()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override string Description()
     {
         throw new System.NotImplementedException();
     }
+
+    public override void Apply(BattleUnit source, BattleUnit target, int tier)
+    {
+        source.Modify(StatsManager.Speed, CoinManager.TierValues[tier]);
+    }
 }
 
-public class InvestmentEffect : CoinEffect
+public class InvestmentEffect : BattleEffect
 {
-    public override void Execute()
+ 
+    public override string Description()
     {
         throw new System.NotImplementedException();
     }
 
-    public override string Description()
+    public override void Apply(BattleUnit source, BattleUnit target, int tier)
     {
         throw new System.NotImplementedException();
     }

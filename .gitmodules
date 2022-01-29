@@ -1,0 +1,12 @@
+[submodule "Packages/Common"]
+	path = Packages/Common
+	url = git@gitlab.com:gameever/gameevertools/Common.git
+[submodule "Packages/RuntimeScriptableSingleton"]
+	path = Packages/RuntimeScriptableSingleton
+	url = git@gitlab.com:gameever/gameevertools/RuntimeScriptableSingleton.git
+[submodule "Packages/ScriptableSettings"]
+	path = Packages/ScriptableSettings
+	url = git@gitlab.com:gameever/gameevertools/ScriptableSettings.git
+[submodule "Packages/SaveAndLoadAsJSON"]
+	path = Packages/SaveAndLoadAsJSON
+	url = git@gitlab.com:gameever/gameevertools/SaveAndLoadAsJSON.git

@@ -17,20 +17,26 @@ public class SceneSwitcherWindow : OdinEditorWindow
         window.Show();
     }
 
-
     [Button]
     public void Preload()
     {
         EditorSceneManager.SaveModifiedScenesIfUserWantsTo(SceneUtils.GetAllOpenedScenes());
         var scene = EditorBuildSettings.scenes[0];
         EditorSceneManager.OpenScene(scene.path);
-        
     }
+    
     [Button]
-    public void Scene1()
+    public void MainMenu()
     {
         EditorSceneManager.SaveModifiedScenesIfUserWantsTo(SceneUtils.GetAllOpenedScenes());
-        EditorSceneManager.OpenScene(AssetDatabase.GetAssetPath(ScenesSettings.Instance.sceneOne.editorAsset));
+        EditorSceneManager.OpenScene(AssetDatabase.GetAssetPath(ScenesSettings.Instance.mainMenu.editorAsset));
+    }
+    
+    [Button]
+    public void MainGame()
+    {
+        EditorSceneManager.SaveModifiedScenesIfUserWantsTo(SceneUtils.GetAllOpenedScenes());
+        EditorSceneManager.OpenScene(AssetDatabase.GetAssetPath(ScenesSettings.Instance.mainGame.editorAsset));
     }
     
     [Button]

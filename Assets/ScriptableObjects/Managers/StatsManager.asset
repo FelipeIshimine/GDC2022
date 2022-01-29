@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8027314935916064939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: Defense
+  m_EditorClassIdentifier: 
+--- !u!114 &-7905272767713572662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: MaxActionPoints
+  m_EditorClassIdentifier: 
+--- !u!114 &-6715942866783682557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: Critical Chance
+  m_EditorClassIdentifier: 
+--- !u!114 &-3547374455472523010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: Health
+  m_EditorClassIdentifier: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b5ae6b7a7149789901992ceb5f50d4, type: 3}
+  m_Name: StatsManager
+  m_EditorClassIdentifier: 
+  loadMode: 2
+  stats:
+  - {fileID: 7708355000786580576}
+  - {fileID: -8027314935916064939}
+  - {fileID: 6173450766307975133}
+  - {fileID: 6536988462605587660}
+  - {fileID: -6715942866783682557}
+  - {fileID: -3547374455472523010}
+  - {fileID: -7905272767713572662}
+  - {fileID: 3980325890356176691}
+  - {fileID: 576064199197138351}
+  speed: {fileID: 0}
+  extractionSpeed: {fileID: 0}
+--- !u!114 &576064199197138351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: HandSize
+  m_EditorClassIdentifier: 
+--- !u!114 &3980325890356176691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: ActionPoints
+  m_EditorClassIdentifier: 
+--- !u!114 &6173450766307975133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: MaxHealth
+  m_EditorClassIdentifier: 
+--- !u!114 &6536988462605587660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: Speed
+  m_EditorClassIdentifier: 
+--- !u!114 &7708355000786580576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: Attack
+  m_EditorClassIdentifier: 

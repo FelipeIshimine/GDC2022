@@ -6,12 +6,14 @@ using UnityEngine.AddressableAssets;
 
 public class ScenesSettings : RuntimeScriptableSingleton<ScenesSettings>
 {
-    public AssetReference sceneOne;
-    
     public AssetReference[] levels = Array.Empty<AssetReference>();
 
     public AssetReference mainMenu;
+    public AssetReference mainGame;
+
     public static AssetReference MainMenu => Instance.mainMenu;
+    public static AssetReference MainGame => Instance.mainGame;
+    public static AssetReference[] Levels => Instance.levels;
 
     public static AssetReference GetLevelReference(int index) => Instance.levels[index];
 

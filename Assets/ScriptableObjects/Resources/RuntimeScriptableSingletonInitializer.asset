@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1723b91b2ea2b40489e74e0e19692836, type: 3}
+  m_Name: RuntimeScriptableSingletonInitializer
+  m_EditorClassIdentifier: 
+  addressableGroupName: RuntimeScriptableSingleton
+  addressableLabel: RuntimeScriptableSingleton
+  elements:
+  - {fileID: 11400000, guid: b460e9bc469aecb4794935bae00de5eb, type: 2}
+  - {fileID: 11400000, guid: bf381fd14798bdf468ffbf06a959cee7, type: 2}
+  - {fileID: 11400000, guid: 10233a58643ad0b409a51fa7908b56f8, type: 2}
+  - {fileID: 11400000, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}

@@ -1,0 +1,63 @@
+1) 2D
+	1) UI
+		1) Buttons
+		2) Icons
+		3) Containers
+		4) Misc
+	2) Characters
+		1) Main
+		2) Enemies
+	3) Environment
+		1) Background
+		2) Foreground
+		3) Terrain
+		4) Props
+		5) Misc
+	4) VFX
+----------------------------------------------
+2) 3D
+	1) Textures
+----------------------------------------------
+3) Animations (animationsclips, animators)
+	1) Characters
+	2) Environment
+	3) VFX
+----------------------------------------------
+4) AssetStore (plugins, downloaded packages)
+----------------------------------------------
+5) Audio
+----------------------------------------------
+6) Documentation
+----------------------------------------------
+7) Fonts
+	1) Title
+	2) Body
+----------------------------------------------
+8) Materials
+----------------------------------------------
+9) Prefabs
+	1) UI
+		1) Canvas
+		2) Elements
+	2) Gameplay
+		1) Levels
+		2) Entities
+			1) Main
+			2) Enemies
+			3) Interactables
+				1) Collectables
+			4) NonInteractables
+		3) Environment
+		4) VFX
+----------------------------------------------
+10) Scenes (project specific)
+	1) GameModes
+	2) Core
+----------------------------------------------
+11) Scriptable Objects (project specific)	
+----------------------------------------------
+12) Scripts (project specific)
+----------------------------------------------
+13) SettingsURP
+----------------------------------------------
+14) Shaders

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 internal class PlayCoinState : AsyncState
 {
@@ -21,14 +23,35 @@ internal class PlayCoinState : AsyncState
 
     protected override void Enter()
     {
-        var selectedCoin = _deckBattleData.Deck.Take(_coinIndex);
+        Debug.Log(">>>PlayCoinState");
+        var hand = _deckBattleData.Hand;
+
+        Coin selectedCoin = hand.Take(_coinIndex, false);
+
+        if (selectedCoin == null)
+            Debug.Log("MONEDA NULA");
+        else if (selectedCoin.headEffect == null || selectedCoin.tailEffect == null)
+            Debug.Log("EFECTO DE MONEDA NULO");
+
         _deckBattleData.Used.Add(selectedCoin);
 
         int selectedFace = UnityEngine.Random.Range(0, 2);
-        var effect = selectedFace == 0?selectedCoin.headEffect:selectedCoin.tailEffect;
+
+        var effect = selectedFace == 0 ? selectedCoin.headEffect : selectedCoin.tailEffect;
         effect.Apply(_source, _target, selectedCoin.tier);
+
+        Debug.Log($"Selected coin:{selectedFace}");
+
+        Done();
+        
     }
 
+    private async void WaitAndDone()
+    {
+        await Task.Yield();
+        Done();
+    }
+    
     protected override void Exit()
     {
     }

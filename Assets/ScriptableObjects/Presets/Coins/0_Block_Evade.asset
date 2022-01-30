@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7970dd07ed543f781e127cf9a6db2cd, type: 3}
-  m_Name: 1_Block_Evade
+  m_Name: 0_Block_Evade
   m_EditorClassIdentifier: 
   coin:
     id: 0
@@ -19,7 +19,7 @@ MonoBehaviour:
     00000000:
       type: {class: Coin, ns: , asm: Assembly-CSharp}
       data:
-        tier: 1
+        tier: 0
         headEffect:
           id: 1
         tailEffect:

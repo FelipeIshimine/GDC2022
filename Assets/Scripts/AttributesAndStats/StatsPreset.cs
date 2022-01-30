@@ -24,6 +24,8 @@ public class StatsPreset : ScriptableObject
         Dictionary<string, int> dictionary = new Dictionary<string, int>();
         foreach (StatPair statPair in values)
             dictionary.Add(statPair.type.Id, statPair.amount);
+
+        dictionary[StatsManager.Health.Id] = dictionary[StatsManager.MaxHealth.Id];
         return dictionary;
     }
 }

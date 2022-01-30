@@ -19,8 +19,7 @@ public class StatsManager : RuntimeScriptableSingleton<StatsManager>
 
     [ListDrawerSettings(HideAddButton = true, CustomRemoveIndexFunction = nameof(RemoveStatType))] public List<StatType> stats = new List<StatType>();
 
-
-    [SerializeField] private StatsPreset playerDefaultStats;
+    [SerializeField, InlineEditor] private StatsPreset playerDefaultStats;
     
     [Title("Attributes")]
     [SerializeField,InlineEditor] private StatType speed;
@@ -40,6 +39,7 @@ public class StatsManager : RuntimeScriptableSingleton<StatsManager>
 
     [SerializeField,InlineEditor] private StatType maxHealth;
     public static StatType MaxHealth => Instance.maxHealth;
+
 
     [SerializeField,InlineEditor] private StatType maxActionPoints;
     public static StatType MaxActionPoints => Instance.maxActionPoints;
@@ -111,6 +111,5 @@ public class StatsManager : RuntimeScriptableSingleton<StatsManager>
     public static StatType GetTypeFromId(string id) => Instance._references.Find(x => x.type.Id == id).type;
 
     public static Dictionary<string, int> CreateDefaultStats() => Instance.playerDefaultStats.Create();
-
 
 }

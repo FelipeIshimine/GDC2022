@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using System.Threading.Tasks;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RootState : AsyncState
 {
@@ -32,33 +29,11 @@ public class RootState : AsyncState
     
     private void GoToMainGame()
     {
-        SwitchState(new MainGameState(GoToMainMenu,Quit));
+        SwitchState(new MainGameState(GoToMainGame,Quit));
     }
 
     private void Quit()
     {
         Application.Quit();
     }
-}
-
-public class MainMenuState : AsyncState
-{
-    private readonly Action _gameCallback;
-    private readonly Action _quitCallback;
-    public MainMenuState(Action gameCallback, Action quitCallback) : base(ScenesSettings.MainMenu, LoadSceneMode.Single)
-    {
-        _gameCallback = gameCallback;
-        _quitCallback = quitCallback;
-    }
-
-    protected override void Enter()
-    {
-    }
-
-    protected override void Exit()
-    {
-    }
-
-    [Button]
-    public void GoToMainGameState() => _gameCallback?.Invoke();
 }

@@ -16,7 +16,9 @@ internal class EnemyTurnState : AsyncState
 
     protected override void Enter()
     {
-        _enemy.SelectedEffect.Apply(_enemy,_player, _enemy.GetRandomTier());
+        _enemy.SelectedEffect.Apply(_enemy,_player, _enemy.SelectedTier);
+        _enemy.ClearEffect();
+        EndTurn();
     }
 
     protected override void Exit()

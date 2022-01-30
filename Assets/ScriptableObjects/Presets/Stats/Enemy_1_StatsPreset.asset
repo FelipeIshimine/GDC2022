@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Enemy_1_StatsPreset
   m_EditorClassIdentifier: 
   values:
-  - type: {fileID: 6173450766307975133, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
+  - type: {fileID: 3542065074071464777, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
     amount: 20

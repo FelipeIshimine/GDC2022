@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class MainGameState : AsyncState
 {
-    private readonly Action _backToMenuCallback;
+    private readonly Action _retryCallback;
     private readonly Action _quitCallback;
     [ShowInInspector] private PlayerData _playerData;
 
-    public MainGameState(Action backToMenuCallback, Action quitCallback) : base(ScenesSettings.MainGame, LoadSceneMode.Single)
+    public MainGameState(Action retryCallback, Action quitCallback) 
     {
-        _backToMenuCallback = backToMenuCallback;
+        _retryCallback = retryCallback;
         _quitCallback = quitCallback;
     }
 
@@ -18,10 +18,11 @@ public class MainGameState : AsyncState
     {
         _playerData = new PlayerData()
         {
-            LevelId = 0,
+            LevelId = -1,
             Deck = DeckManager.CreateDefaultDeck(),
             Stats = StatsManager.CreateDefaultStats()
         };
+        GoToNextBattle();
     }
 
     protected override void Exit()
@@ -32,6 +33,7 @@ public class MainGameState : AsyncState
 
     [Button] private void GoToNextBattle()
     {
-        SwitchState(new BattleState(_playerData, _backToMenuCallback, GoToShop));
+        _playerData.LevelId++;
+        SwitchState(new BattleState(_playerData, _retryCallback, GoToNextBattle));
     }
 }

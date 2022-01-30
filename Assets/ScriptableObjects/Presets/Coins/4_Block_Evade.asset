@@ -19,7 +19,7 @@ MonoBehaviour:
     00000000:
       type: {class: Coin, ns: , asm: Assembly-CSharp}
       data:
-        tier: 4
+        tier: 3
         headEffect:
           id: 1
         tailEffect:

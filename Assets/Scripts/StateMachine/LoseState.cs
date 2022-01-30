@@ -12,10 +12,13 @@ internal class LoseState : AsyncState
 
     protected override void Enter()
     {
+        Canvas_Gameplay.Lose();
+        Canvas_Gameplay.OnRetryRequest += BackToMenu;
     }
 
     protected override void Exit()
     {
+        Canvas_Gameplay.OnRetryRequest -= BackToMenu;
     }
     [Button] private void BackToMenu() => _menuCallback.Invoke();
 }

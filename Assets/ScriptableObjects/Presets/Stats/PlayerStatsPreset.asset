@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStatsPreset
   m_EditorClassIdentifier: 
   values:
-  - type: {fileID: 6173450766307975133, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
+  - type: {fileID: -3547374455472523010, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
     amount: 100
   - type: {fileID: -7905272767713572662, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
     amount: 3
@@ -23,3 +23,7 @@ MonoBehaviour:
     amount: 0
   - type: {fileID: 6536988462605587660, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
     amount: 10
+  - type: {fileID: 576064199197138351, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
+    amount: 4
+  - type: {fileID: 3542065074071464777, guid: 74c72a5a6399f9d48beb2d865de839b8, type: 2}
+    amount: 100

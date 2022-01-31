@@ -12,13 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e00abbe1d8143ff92589a8479702cc7, type: 3}
   m_Name: EnemyPreset 3
   m_EditorClassIdentifier: 
-  tierRange: {x: 0, y: 5}
+  tierRange: {x: 0, y: 3}
   stats: {fileID: 11400000, guid: bbc6b6c8a1632ae42865828ea1fa538f, type: 2}
-  effects: []
+  effects:
+  - id: 0
+  - id: 1
+  - id: 2
   prefabReference:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  sprite: {fileID: 21300000, guid: 72c8c1ced30a1fd4cbca4fffede563fa, type: 3}
   references:
     version: 1
+    00000000:
+      type: {class: AttackEffect, ns: , asm: Assembly-CSharp}
+    00000001:
+      type: {class: BlockEffect, ns: , asm: Assembly-CSharp}
+    00000002:
+      type: {class: EvadeEffect, ns: , asm: Assembly-CSharp}

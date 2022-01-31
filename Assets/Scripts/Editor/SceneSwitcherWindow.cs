@@ -38,7 +38,7 @@ public class SceneSwitcherWindow : OdinEditorWindow
         EditorSceneManager.SaveModifiedScenesIfUserWantsTo(SceneUtils.GetAllOpenedScenes());
         EditorSceneManager.OpenScene(AssetDatabase.GetAssetPath(ScenesSettings.Instance.mainGame.editorAsset));
     }
-    
+    /*
     [Button]
     public void LoadLevel(int index)
     {
@@ -47,6 +47,6 @@ public class SceneSwitcherWindow : OdinEditorWindow
         EditorSceneManager.SaveModifiedScenesIfUserWantsTo(SceneUtils.GetAllOpenedScenes());
         EditorSceneManager.OpenScene(AssetDatabase.GetAssetPath(ScenesSettings.GetLevelReference(index).editorAsset));
     }
-    
+    */
     
 }

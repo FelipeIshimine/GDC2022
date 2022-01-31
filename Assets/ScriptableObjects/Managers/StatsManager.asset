@@ -64,21 +64,22 @@ MonoBehaviour:
   stats:
   - {fileID: 7708355000786580576}
   - {fileID: -8027314935916064939}
-  - {fileID: 6173450766307975133}
   - {fileID: 6536988462605587660}
   - {fileID: -6715942866783682557}
   - {fileID: -3547374455472523010}
   - {fileID: -7905272767713572662}
   - {fileID: 3980325890356176691}
   - {fileID: 576064199197138351}
+  - {fileID: 3542065074071464777}
   playerDefaultStats: {fileID: 11400000, guid: edf964b83f36c284b8148df042a88df3, type: 2}
   speed: {fileID: 6536988462605587660}
   attack: {fileID: 7708355000786580576}
   actionPoints: {fileID: 3980325890356176691}
   defense: {fileID: -8027314935916064939}
   health: {fileID: -3547374455472523010}
-  maxHealth: {fileID: -7905272767713572662}
+  maxHealth: {fileID: 3542065074071464777}
   maxActionPoints: {fileID: -7905272767713572662}
+  handSize: {fileID: 576064199197138351}
 --- !u!114 &576064199197138351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +92,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
   m_Name: HandSize
   m_EditorClassIdentifier: 
+--- !u!114 &3542065074071464777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
+  m_Name: MaxHealth
+  m_EditorClassIdentifier: 
 --- !u!114 &3980325890356176691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,18 +115,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
   m_Name: ActionPoints
-  m_EditorClassIdentifier: 
---- !u!114 &6173450766307975133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfdf4fbe41274cc0866118d28b3edb4c, type: 3}
-  m_Name: MaxHealth
   m_EditorClassIdentifier: 
 --- !u!114 &6536988462605587660
 MonoBehaviour:

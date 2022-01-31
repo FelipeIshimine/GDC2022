@@ -12,10 +12,13 @@ internal class WinState : AsyncState
 
     protected override void Enter()
     {
+        Canvas_Gameplay.Win();
+        Canvas_Gameplay.OnNextRequest += Continue;
     }
 
     protected override void Exit()
     {
+        Canvas_Gameplay.OnNextRequest -= Continue;
     }
 
     [Button] private void Continue() => _continueCallback.Invoke();

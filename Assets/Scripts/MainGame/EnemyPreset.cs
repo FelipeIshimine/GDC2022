@@ -10,4 +10,5 @@ public class EnemyPreset : ScriptableObject
     public StatsPreset stats;
     [SerializeReference] public List<BattleEffect> effects = new List<BattleEffect>(); 
     public AssetReferenceGameObject prefabReference;
+    public Sprite sprite;
 }

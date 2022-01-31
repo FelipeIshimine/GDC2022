@@ -73,17 +73,26 @@ public abstract class AsyncState
     
     protected async void SwitchState(AsyncState nState)
     {
+        var old = _current;
+        
+        if(!(nState is NullState))
+            Debug.Log($"SwitchState {(old!=null?old.GetType().Name:"NONE").ApplyColor(UnityStringExtensions.StringColor.Red)}:{(nState !=null?nState.GetType().Name.ApplyColor(UnityStringExtensions.StringColor.Green):"NONE")}");
+
         if (_current != null)
         {
             _current.State = InnerState.Exiting;
             _current.BaseExit();
+            _current.Exit();
             await _current.UnloadScenesAsync();
             _current.State = InnerState.Finished;
         }
-
+        
+    
         _current = nState;
         if (_current != null)
             await EnterState(_current);
+        
+
         
         OnAnySwitchState?.Invoke(Root);
     }

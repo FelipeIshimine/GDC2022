@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 internal class BattleState : AsyncState
 {
     private int PlayerHealth => _playerData.Health;
 
-    private bool DidLose => PlayerHealth <= 0;
+    private bool DidLose => PlayerHealth <= 0 || (_deckBattleData.IsDeckEmpty() && _deckBattleData.IsDiscardEmpty()); 
 
     private bool DidWin => _enemy.IsDead();
 
@@ -15,16 +15,15 @@ internal class BattleState : AsyncState
     private readonly Action _continueCallback;
     
     private readonly PlayerData _playerData;
-
-    private readonly BattleUnit _playerUnit;
-    private readonly Enemy _enemy;
+    [ShowInInspector] private readonly BattleUnit _playerUnit;
+    [ShowInInspector] private readonly Enemy _enemy;
     private readonly BattleLevel _battleLevel;
 
     private readonly DeckBattleData _deckBattleData;
 
     private int LevelId => _playerData.LevelId;
     
-    public BattleState(PlayerData playerData, Action backToMenuCallback, Action continueCallback) : base(ScenesSettings.Levels[playerData.LevelId], LoadSceneMode.Additive)
+    public BattleState(PlayerData playerData, Action backToMenuCallback, Action continueCallback) : base(ScenesSettings.MainGame, LoadSceneMode.Single)
     {
         _playerData = playerData;
         _backToMenuCallback = backToMenuCallback;
@@ -39,11 +38,16 @@ internal class BattleState : AsyncState
 
     protected override void Enter()
     {
+        EnemyEntity.Instance.Initialize(_enemy);
+
+        _playerUnit.OnStatsModify += OnPlayerStatsModify;
+        
         GoToPlayerTurnState();
     }
 
     protected override void Exit()
     {
+        _playerUnit.OnStatsModify -= OnPlayerStatsModify;
     }
 
     [Button] private void GoToPlayerTurnState()
@@ -55,6 +59,8 @@ internal class BattleState : AsyncState
     [Button] private void GoToEnemyTurnState()
     {
         if (TryEndBattle()) return;
+     
+        Debug.Log("Enemy Turn");
         SwitchState(new EnemyTurnState(_playerUnit, _enemy, GoToPlayerTurnState));
     }
     
@@ -75,6 +81,7 @@ internal class BattleState : AsyncState
     
     [Button] private void GoToWin()
     {
+        
         SwitchState(new WinState(_continueCallback));
     }
     
@@ -83,25 +90,12 @@ internal class BattleState : AsyncState
         SwitchState(new LoseState(_backToMenuCallback));
     }
 
+    private void OnPlayerStatsModify(string arg1, int arg2)
+    {
+        Debug.Log("Refresh");
+        Canvas_Gameplay.Refresh(_playerUnit, _deckBattleData);
+    }
+    
     //public void GoToPlaying() => SwitchState(new PlayingState(GoToPause));
     //public void GoToPause() => SwitchState(new PauseState(GoToPlaying));
 }
-
-internal class DeckBattleData
-{
-    public readonly List<Coin> Deck;
-    public readonly List<Coin> Discarded = new List<Coin>();
-    public readonly List<Coin> Used = new List<Coin>();
-
-    public DeckBattleData(List<Coin> coins)
-    {
-        Deck = new List<Coin>(coins);
-        for (int i = Deck.Count - 1; i >= 0; i--)
-        {
-            int j = UnityEngine.Random.Range(0, i);
-            (Deck[i], Deck[j]) = (Deck[i], Deck[j]);
-        }
-    }
-}
-
-

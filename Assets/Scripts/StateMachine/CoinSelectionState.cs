@@ -27,6 +27,7 @@ internal class CoinSelectionState : AsyncState
     {
         HandContainerUI.OnPlayRequest += PlayCoin;
         HandContainerUI.OnDiscardRequest += DiscardCoin;
+
     }
 
     protected override void Exit()

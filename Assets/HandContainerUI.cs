@@ -16,7 +16,12 @@ public class HandContainerUI : MonoBehaviour
 
     public Bounds playArea;
     public Bounds discardArea;
-    
+
+    private void Awake()
+    {
+        proto.gameObject.SetActive(false);
+    }
+
     [Button]
     public void Initialize(int count)
     {

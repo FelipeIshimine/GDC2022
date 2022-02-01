@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadMode: 2
   tierValues: 050000000a000000190000003200000064000000
+  textures:
+  - {fileID: 2800000, guid: 8d8e6200e6b685e40a4e19f8779b8b2a, type: 3}
+  - {fileID: 2800000, guid: abbaab86f176cb947a82bbba6eac50c2, type: 3}
+  - {fileID: 2800000, guid: 5caf0226b84fd0a49b2a9f8a710585a4, type: 3}
+  - {fileID: 2800000, guid: 2f9fb5a2b90b2de41b9aabec94d1f944, type: 3}
+  - {fileID: 2800000, guid: c495b68500917094a815c81dea3ef156, type: 3}

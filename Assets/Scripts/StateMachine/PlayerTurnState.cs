@@ -56,7 +56,7 @@ internal class PlayerTurnState : AsyncState
     
     private void GoToCoinSelectionState()
     {
-        if(_enemyUnit.Health <= 0)
+        if(_playerUnit.ActionPoints == 0 || _enemyUnit.Health <= 0)
             EndTurn();
         else
             SwitchState(new CoinSelectionState(_deckBattleData, _playerUnit.HandSize, CoinSelected, CoinDiscard));

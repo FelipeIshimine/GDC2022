@@ -11,6 +11,9 @@ internal class PlayCoinState : AsyncState
     private readonly BattleUnit _source;
     private readonly BattleUnit _target;
     private readonly DeckBattleData _deckBattleData;
+
+    private int _selectedFace;
+    private Coin _selectedCoin;
     
     public PlayCoinState(BattleUnit source, BattleUnit target, DeckBattleData deckBattleData, int coinIndex, Action coinPlayedCallback)
     {
@@ -23,39 +26,43 @@ internal class PlayCoinState : AsyncState
 
     protected override void Enter()
     {
+        HandContainerUI.SetActive(false);
         Debug.Log(">>>PlayCoinState");
+
         var hand = _deckBattleData.Hand;
-
-        Coin selectedCoin = hand.Take(_coinIndex, false);
-
-        if (selectedCoin == null)
-            Debug.Log("MONEDA NULA");
-        else if (selectedCoin.headEffect == null || selectedCoin.tailEffect == null)
-            Debug.Log("EFECTO DE MONEDA NULO");
-
-        _deckBattleData.Used.Add(selectedCoin);
-
-        int selectedFace = UnityEngine.Random.Range(0, 2);
-
-        var effect = selectedFace == 0 ? selectedCoin.headEffect : selectedCoin.tailEffect;
-        effect.Apply(_source, _target, selectedCoin.tier);
-
-        Debug.Log($"Selected coin:{selectedFace}");
-
-        Done();
+        _selectedCoin = hand.Take(_coinIndex, false);
         
+        _selectedFace = UnityEngine.Random.Range(0, 2);
+        Debug.Log($"Selected coin:{_selectedFace}");
+ 
+        CoinFlipUI.Instance.SetCoin(_selectedCoin);
+        CoinFlipUI.Instance.FlipCoin(_selectedFace==0, AnimationDone);
+
     }
 
-    private async void WaitAndDone()
+    void AnimationDone()
     {
-        await Task.Yield();
+        ApplyEffect();
         Done();
     }
-    
+
+    private void ApplyEffect()
+    {
+        _deckBattleData.Used.Add(_selectedCoin);
+        
+        Debug.Log($"Selected{_selectedFace} Head:{_selectedCoin.headEffect} Tail:{_selectedCoin.tailEffect}");
+        
+        var effect = _selectedFace == 0 ? _selectedCoin.headEffect : _selectedCoin.tailEffect;
+        effect.Apply(_source, _target, _selectedCoin.tier);
+    }
+
     protected override void Exit()
     {
     }
 
-    [Button] private void Done() => _coinPlayedCallback?.Invoke();
-
+    [Button] private void Done()
+    {
+        HandContainerUI.SetActive(true);
+        _coinPlayedCallback?.Invoke();
+    }
 }

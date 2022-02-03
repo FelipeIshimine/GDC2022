@@ -15,9 +15,13 @@ public class Canvas_Gameplay : BaseMonoSingleton<Canvas_Gameplay>
     public TextMeshProUGUI actionPointsText;
     public TextMeshProUGUI life;
     public TextMeshProUGUI block;
-    public GameObject blockContainer;
+    public AnimatedContainer blockAnimatedContainer;
     public Slider slider;
-
+    public Image healthFill;
+    public Color healthColor;
+    public Color armorColor;
+    
+    
     public GameObject winScreen;
     public GameObject loseScreen;
 
@@ -30,8 +34,19 @@ public class Canvas_Gameplay : BaseMonoSingleton<Canvas_Gameplay>
         Instance.life.text = $"{player.Health}/{player.MaxHealth}";
 
         var blockValue = player.Defense;
-        Instance.blockContainer.gameObject.SetActive(player.Defense > 0);
-        Instance.block.text = $"+{blockValue}";
+
+        if (player.Defense > 0)
+        {
+            Instance.block.text = $"+{blockValue}";
+            Instance.blockAnimatedContainer.Open();
+            Instance.healthFill.color = Instance.armorColor;
+        }
+        else
+        {
+            Instance.healthFill.color = Instance.healthColor;
+            Instance.blockAnimatedContainer.Close();
+        }
+        
         Instance.slider.value = (float)player.Health / player.MaxHealth;
     }
 

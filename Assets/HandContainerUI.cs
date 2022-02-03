@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class HandContainerUI : MonoBehaviour
+public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
 {
     [ShowInInspector] public static Action<int> OnDiscardRequest;
     [ShowInInspector] public static Action<int> OnPlayRequest;
@@ -17,8 +17,9 @@ public class HandContainerUI : MonoBehaviour
     public Bounds playArea;
     public Bounds discardArea;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         proto.gameObject.SetActive(false);
     }
 

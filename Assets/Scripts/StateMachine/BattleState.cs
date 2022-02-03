@@ -17,9 +17,12 @@ internal class BattleState : AsyncState
     private readonly PlayerData _playerData;
     [ShowInInspector] private readonly BattleUnit _playerUnit;
     [ShowInInspector] private readonly Enemy _enemy;
+    private readonly BattleUnit[] units;
     private readonly BattleLevel _battleLevel;
 
     private readonly DeckBattleData _deckBattleData;
+
+    private int _turn = 0;
 
     private int LevelId => _playerData.LevelId;
     
@@ -34,6 +37,7 @@ internal class BattleState : AsyncState
 
         _playerUnit = new BattleUnit(_playerData.Stats);
         _enemy = new Enemy(_battleLevel.enemyPreset);
+        units = new[] { _playerUnit, _enemy };
     }
 
     protected override void Enter()
@@ -53,15 +57,25 @@ internal class BattleState : AsyncState
     [Button] private void GoToPlayerTurnState()
     {
         if (TryEndBattle()) return;
+        TurnPrepare();
         SwitchState(new PlayerTurnState(_playerUnit, _enemy, _deckBattleData, GoToEnemyTurnState, _backToMenuCallback));
     }
     
     [Button] private void GoToEnemyTurnState()
     {
         if (TryEndBattle()) return;
-     
-        Debug.Log("Enemy Turn");
+        TurnPrepare();
         SwitchState(new EnemyTurnState(_playerUnit, _enemy, GoToPlayerTurnState));
+    }
+
+    private void TurnPrepare()
+    {
+        _turn++;
+        foreach (BattleUnit battleUnit in units)
+        {
+            battleUnit.Set(StatsManager.Defense, 0);
+            battleUnit.Set(StatsManager.Speed, 0);
+        }
     }
     
     private bool TryEndBattle()

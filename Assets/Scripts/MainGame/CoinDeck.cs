@@ -31,10 +31,11 @@ public class AttackEffect : BattleEffect
         var attackAmount = source.Attack + CoinManager.TierValues[tier];
         var defenceAmount = target.Defense;
 
-        int damage = attackAmount - defenceAmount;
-
-        target.Modify(StatsManager.Defense, attackAmount);
-        target.Modify(StatsManager.Health, -damage);
+        int healthDamage = Mathf.Min(defenceAmount - attackAmount, 0);
+        int armorDamage = Mathf.Min(defenceAmount, attackAmount);
+        
+        target.Modify(StatsManager.Defense, -armorDamage);
+        target.Modify(StatsManager.Health, healthDamage);
     }
 }
 

@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class BattleUnit
 {
-    public Action<string,int> OnStatsModify;
-    public Dictionary<string, int> Stats;
+    public event Action<string,int> OnStatsModify;
+    public event Action OnTurnStart;
+    public event Action OnTurnEnd;
 
-    public Action OnTurnStart;
-    public Action OnTurnEnd;
+    public Dictionary<string, int> Stats;
 
     public bool IsDead() => Health <= 0;
 

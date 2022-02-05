@@ -28,7 +28,7 @@ public class TurnState : AsyncState
         }
         
         if (_turnType == TurnType.Enemy)
-            SwitchState(new EnemyTurnState(_units[0], (Enemy)_units[1],_onQuitCallback,  _onDoneCallback));
+            SwitchState(new EnemyTurnState(_units[0], (Enemy)_units[1], _onQuitCallback,  _onDoneCallback));
         else
             SwitchState(new PlayerTurnState(_units[0], (Enemy)_units[1], _deckBattleData, _onQuitCallback, _onDoneCallback));
     }

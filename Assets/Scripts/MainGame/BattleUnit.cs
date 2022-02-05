@@ -8,6 +8,9 @@ public class BattleUnit
     public Action<string,int> OnStatsModify;
     public Dictionary<string, int> Stats;
 
+    public Action OnTurnStart;
+    public Action OnTurnEnd;
+
     public bool IsDead() => Health <= 0;
 
     #region StatGetters
@@ -21,6 +24,8 @@ public class BattleUnit
 
     #endregion
 
+    public bool IsOnTurn { get; private set; }
+    
     public BattleUnit(StatsPreset statsPreset)
     {
         Stats = statsPreset.Create();
@@ -49,5 +54,17 @@ public class BattleUnit
         Stats[statType.Id] = amount;
         
         OnStatsModify.Invoke(statType.Id, amount - oldValue);
+    }
+
+    public void TurnStarted()
+    {
+        IsOnTurn = true;
+        OnTurnStart?.Invoke();
+    }
+
+    public void TurnEnd()
+    {
+        IsOnTurn = false;
+        OnTurnEnd?.Invoke();
     }
 }

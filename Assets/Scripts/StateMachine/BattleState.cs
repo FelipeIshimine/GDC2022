@@ -17,8 +17,7 @@ internal class BattleState : AsyncState
     private readonly PlayerData _playerData;
     [ShowInInspector] private readonly BattleUnit _playerUnit;
     [ShowInInspector] private readonly Enemy _enemy;
-    private readonly BattleUnit[] units;
-    private readonly BattleLevel _battleLevel;
+    private readonly BattleUnit[] _units;
 
     private readonly DeckBattleData _deckBattleData;
 
@@ -33,11 +32,11 @@ internal class BattleState : AsyncState
         _continueCallback = continueCallback;
         _deckBattleData = new DeckBattleData(_playerData.Deck);
         
-        _battleLevel = LevelsManager.BattleLevels[LevelId];
+        var battleLevel = LevelsManager.BattleLevels[LevelId];
 
         _playerUnit = new BattleUnit(_playerData.Stats);
-        _enemy = new Enemy(_battleLevel.enemyPreset);
-        units = new[] { _playerUnit, _enemy };
+        _enemy = new Enemy(battleLevel.enemyPreset);
+        _units = new[] { _playerUnit, _enemy };
     }
 
     protected override void Enter()
@@ -57,27 +56,17 @@ internal class BattleState : AsyncState
     [Button] private void GoToPlayerTurnState()
     {
         if (TryEndBattle()) return;
-        TurnPrepare();
-        SwitchState(new PlayerTurnState(_playerUnit, _enemy, _deckBattleData, GoToEnemyTurnState, _backToMenuCallback));
+        _turn++;
+        SwitchState(new TurnState(_units, TurnState.TurnType.Player, _deckBattleData, _backToMenuCallback, GoToEnemyTurnState));
     }
     
     [Button] private void GoToEnemyTurnState()
     {
         if (TryEndBattle()) return;
-        TurnPrepare();
-        SwitchState(new EnemyTurnState(_playerUnit, _enemy, GoToPlayerTurnState));
+        _turn++;
+        SwitchState(new TurnState(_units, TurnState.TurnType.Enemy, _deckBattleData, _backToMenuCallback, GoToEnemyTurnState));
     }
 
-    private void TurnPrepare()
-    {
-        _turn++;
-        foreach (BattleUnit battleUnit in units)
-        {
-            battleUnit.Set(StatsManager.Defense, 0);
-            battleUnit.Set(StatsManager.Speed, 0);
-        }
-    }
-    
     private bool TryEndBattle()
     {
         if (DidWin)
@@ -95,7 +84,6 @@ internal class BattleState : AsyncState
     
     [Button] private void GoToWin()
     {
-        
         SwitchState(new WinState(_continueCallback));
     }
     

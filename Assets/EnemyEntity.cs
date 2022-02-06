@@ -13,14 +13,19 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
     
     public Image effectIcon;
     
-    public SpriteRenderer defendShield;
-    public float defenseShieldAnimDuration = .4f;
-    public AnimationCurve colorCurve;
     public TextMeshProUGUI effectText;
-    public EnemyShield enemyShield;
-    
-    private IEnumerator _routine;
-    
+    public EnemyShield shield;
+    public BlockUI blockUI;
+
+    private bool IsOnTurn => _enemy.IsOnTurn;
+    private IReadOnlyDictionary<string, int> Stats => _enemy.Stats;
+
+    private int GetStat(StatType type)
+    {
+        Stats.TryGetValue(type.Id, out int value);
+        return value;
+    }
+
     public void Initialize(Enemy enemy)
     {
         _enemy = enemy;
@@ -43,35 +48,39 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
             healthText.text = $"{_enemy.Health}/{_enemy.MaxHealth}";
             healthSlider.value = (float)_enemy.Health / _enemy.MaxHealth;
         }
+        else if (id == StatsManager.Defense.Id)
+        {
+            if (IsOnTurn)
+            {
+                int defenseValue = Stats[StatsManager.Defense.Id]; 
+                if (defenseValue == 0 && amount<0)
+                    shield.PlayBreakAnimation();
+                else
+                {
+                    if (amount < 0)
+                        shield.PlayBlockAnimation();
+                }
+            }
+            else if (Stats[StatsManager.Defense.Id] == 0)
+            {
+                if( amount<0)
+                    shield.PlayDisappearAnimation();
+                else
+                    shield.PlayAppearAnimation();
+            }
+        }
+        blockUI.SetValue(GetStat(StatsManager.Defense));
 
-        if (id == StatsManager.Defense.Id && amount < 0)
-            ShieldAnimation();
     }
 
-    private void ShieldAnimation()
-    {
-        this.PlayCoroutine(ref _routine, ShieldAnimationRoutine);
-    }
 
     private void EffectSelected(BattleEffect battleEffect)
     {
-        if (battleEffect != null)
-        {
-            effectIcon.sprite = battleEffect.Icon;
-            effectText.text = CoinManager.TierValues[_enemy.SelectedTier].ToString();
-        }
+        if (battleEffect == null) return;
+        
+        effectIcon.sprite = battleEffect.Icon;
+        effectText.text = CoinManager.TierValues[_enemy.SelectedTier].ToString();
     }
 
-    private IEnumerator ShieldAnimationRoutine()
-    {
-        float t = 0;
-        defendShield.gameObject.SetActive(true);
-        do
-        {
-            t += Time.deltaTime / defenseShieldAnimDuration;
-            defendShield.color = Color.Lerp(Color.white, Color.clear, colorCurve.Evaluate(t));
-            yield return null;
-        } while (t<1);
-        defendShield.gameObject.SetActive(false);
-    }
+
 }

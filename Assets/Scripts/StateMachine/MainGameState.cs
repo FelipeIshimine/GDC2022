@@ -16,12 +16,7 @@ public class MainGameState : AsyncState
 
     protected override void Enter()
     {
-        _playerData = new PlayerData()
-        {
-            LevelId = -1,
-            Deck = DeckManager.CreateDefaultDeck(),
-            Stats = StatsManager.CreateDefaultStats()
-        };
+        _playerData = new PlayerData(-1, DeckManager.CreateDefaultDeck(), StatsManager.CreateDefaultStats());
         GoToNextBattle();
     }
 

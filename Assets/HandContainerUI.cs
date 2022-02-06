@@ -51,7 +51,6 @@ public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
 
     private void OnCoinDrop(CoinSlot slot, Vector3 position)
     {
-        Debug.Log(position);
         if (IsInsidePlayArea(position))
             PlayFrom(slot);
         else if (IsInsideDiscardArea(position))
@@ -62,7 +61,6 @@ public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
 
     private void DiscardFrom(CoinSlot slot)
     {
-        Debug.Log($"Discarding from {slot.name}");
         slot.HideCoin();
         OnDiscardRequest?.Invoke(slots.IndexOf(slot));
         
@@ -70,7 +68,6 @@ public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
 
     private void PlayFrom(CoinSlot slot)
     {
-        Debug.Log($"Playing from {slot.name}");
         slot.HideCoin();
         OnPlayRequest?.Invoke(slots.IndexOf(slot));
     }

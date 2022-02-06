@@ -3,13 +3,15 @@ using Sirenix.OdinInspector;
 
 internal class EnemyTurnState : AsyncState
 {
+    private readonly BattleUnit[] _units;
     private readonly BattleUnit _player;
     private readonly Enemy _enemy;
     private readonly Action _endTurnCallback;
     private readonly Action _quitCallback;
 
-    public EnemyTurnState(BattleUnit player, Enemy enemy, Action quitCallback,Action endTurnCallback)
+    public EnemyTurnState(BattleUnit[] units, BattleUnit player, Enemy enemy, Action quitCallback,Action endTurnCallback)
     {
+        _units = units;
         _player = player;
         _enemy = enemy;
         _quitCallback = quitCallback;
@@ -18,6 +20,12 @@ internal class EnemyTurnState : AsyncState
 
     protected override void Enter()
     {
+        _enemy.Set(StatsManager.Defense, 0);
+        _enemy.Set(StatsManager.Speed, 0);
+
+        foreach (BattleUnit battleUnit in _units)
+            battleUnit.TurnStarted();
+        
         _enemy.SelectedEffect.Apply(_enemy,_player, _enemy.SelectedTier);
         _enemy.ClearEffect();
         EndTurn();

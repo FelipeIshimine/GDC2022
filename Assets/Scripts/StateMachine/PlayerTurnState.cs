@@ -11,12 +11,15 @@ internal class PlayerTurnState : AsyncState
     [ShowInInspector]private readonly DeckBattleData _deckBattleData;
 
     private readonly BattleUnit _playerUnit;
+    private readonly BattleUnit[] _units;
     private readonly Enemy _enemyUnit;
 
     private int _selectedCoin = -1;
 
-    public PlayerTurnState(BattleUnit playerUnit, Enemy enemyUnit, DeckBattleData deckBattleData, Action endTurnCallback, Action backToMenuCallback)
+    public PlayerTurnState(BattleUnit[] units, BattleUnit playerUnit, Enemy enemyUnit,
+        DeckBattleData deckBattleData, Action backToMenuCallback, Action endTurnCallback)
     {
+        _units = units;
         _enemyUnit = enemyUnit;
         _playerUnit = playerUnit;
         _deckBattleData = deckBattleData;
@@ -26,6 +29,12 @@ internal class PlayerTurnState : AsyncState
    
     protected override void Enter()
     {
+        _playerUnit.Set(StatsManager.Defense, 0);
+        _playerUnit.Set(StatsManager.Speed, 0);
+        
+        foreach (BattleUnit battleUnit in _units)
+            battleUnit.TurnStarted();
+        
         RefreshHand();
 
         _enemyUnit.SelectEffect();
@@ -56,7 +65,7 @@ internal class PlayerTurnState : AsyncState
     
     private void GoToCoinSelectionState()
     {
-        if(_playerUnit.ActionPoints == 0 || _enemyUnit.Health <= 0)
+        if(_playerUnit.ActionPoints == 0 || _enemyUnit.Health <= 0 || _playerUnit.Health == 0)
             EndTurn();
         else
             SwitchState(new CoinSelectionState(_deckBattleData, _playerUnit.HandSize, CoinSelected, CoinDiscard));

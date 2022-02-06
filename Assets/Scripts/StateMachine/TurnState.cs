@@ -20,17 +20,10 @@ public class TurnState : AsyncState
 
     protected override void Enter()
     {
-        foreach (BattleUnit battleUnit in _units)
-        {
-            battleUnit.Set(StatsManager.Defense, 0);
-            battleUnit.Set(StatsManager.Speed, 0);
-            battleUnit.TurnStarted();
-        }
-        
         if (_turnType == TurnType.Enemy)
-            SwitchState(new EnemyTurnState(_units[0], (Enemy)_units[1], _onQuitCallback,  _onDoneCallback));
+            SwitchState(new EnemyTurnState(_units, _units[0], (Enemy)_units[1], _onQuitCallback,  _onDoneCallback));
         else
-            SwitchState(new PlayerTurnState(_units[0], (Enemy)_units[1], _deckBattleData, _onQuitCallback, _onDoneCallback));
+            SwitchState(new PlayerTurnState(_units, _units[0], (Enemy)_units[1], _deckBattleData, _onQuitCallback, _onDoneCallback));
     }
 
     protected override void Exit()

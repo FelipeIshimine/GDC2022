@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 internal class BattleState : AsyncState
 {
-    private int PlayerHealth => _playerData.Health;
+    private int PlayerHealth => _playerUnit.Health;
 
     private bool DidLose => PlayerHealth <= 0 || (_deckBattleData.IsDeckEmpty() && _deckBattleData.IsDiscardEmpty()); 
 
@@ -64,11 +64,12 @@ internal class BattleState : AsyncState
     {
         if (TryEndBattle()) return;
         _turn++;
-        SwitchState(new TurnState(_units, TurnState.TurnType.Enemy, _deckBattleData, _backToMenuCallback, GoToEnemyTurnState));
+        SwitchState(new TurnState(_units, TurnState.TurnType.Enemy, _deckBattleData, _backToMenuCallback, GoToPlayerTurnState));
     }
 
     private bool TryEndBattle()
     {
+        Debug.Log($"DidWin:{DidWin} DidLose:{DidLose} {PlayerHealth})");
         if (DidWin)
         {
             GoToWin();

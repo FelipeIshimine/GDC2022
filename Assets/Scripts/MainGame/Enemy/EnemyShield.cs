@@ -5,31 +5,31 @@ using UnityEngine;
 
 public class EnemyShield : MonoBehaviour
 {
-    public SpriteRenderer render;
-    public SpriteRenderer shineRender;
+    [SerializeField] private SpriteRenderer render;
+    [SerializeField] private SpriteRenderer shineRender;
 
     [Header("Appear")]
-    [FoldoutGroup("Animations")] public float appearDuration = .5f; 
-    [FoldoutGroup("Animations")] public AnimationCurve appearScaleCurve;
-    [FoldoutGroup("Animations")] public AnimationCurve appearAlphaCurve;
-    [FoldoutGroup("Animations")] public AnimationCurve appearShineAlphaCurve;
+    [FoldoutGroup("Animations"), SerializeField] private float appearDuration = .5f; 
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve appearScaleCurve;
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve appearAlphaCurve;
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve appearShineAlphaCurve;
 
     [Header("Disappear")]
-    [FoldoutGroup("Animations")] public float disappearDuration = .5f; 
-    [FoldoutGroup("Animations")] public AnimationCurve disappearScaleCurve;
-    [FoldoutGroup("Animations")] public AnimationCurve disappearAlphaCurve;
+    [FoldoutGroup("Animations"), SerializeField] private float disappearDuration = .5f; 
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve disappearScaleCurve;
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve disappearAlphaCurve;
     
     [Header("Block")]
-    [FoldoutGroup("Animations")] public float blockDuration = .5f; 
-    [FoldoutGroup("Animations")] public AnimationCurve blockScaleCurve;
-    [FoldoutGroup("Animations")] public AnimationCurve blockShineAlphaCurve;
+    [FoldoutGroup("Animations"), SerializeField] private float blockDuration = .5f; 
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve blockScaleCurve;
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve blockShineAlphaCurve;
     
     [Header("Break")]
-    [FoldoutGroup("Animations")] public float breakDuration = .5f; 
-    [FoldoutGroup("Animations")] public AnimationCurve breakScaleCurve;
-    [FoldoutGroup("Animations")] public AnimationCurve breakAlphaCurve;
-    [FoldoutGroup("Animations")] public AnimationCurve breakShineAlphaCurve;
-    [FoldoutGroup("Animations")] public ParticleSystem breakParticles;
+    [FoldoutGroup("Animations"), SerializeField] private float breakDuration = .5f; 
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve breakScaleCurve;
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve breakAlphaCurve;
+    [FoldoutGroup("Animations"), SerializeField] private AnimationCurve breakShineAlphaCurve;
+    [FoldoutGroup("Animations"), SerializeField] private ParticleSystem breakParticles;
     
     private IEnumerator _routine;
 

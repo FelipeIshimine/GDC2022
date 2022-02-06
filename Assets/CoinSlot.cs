@@ -63,7 +63,7 @@ public class CoinSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void SetCoin(Coin coin)
     {
-        Debug.Log($"{this} SetCoin({coin})");
+        //Debug.Log($"{this} SetCoin({coin})");
         coinEntity.Initialize(coin, CoinDropped);
         coinEntity.gameObject.SetActive(true);
         ResetCoinPosition();

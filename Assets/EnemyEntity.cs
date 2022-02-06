@@ -17,7 +17,8 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
     public float defenseShieldAnimDuration = .4f;
     public AnimationCurve colorCurve;
     public TextMeshProUGUI effectText;
-
+    public EnemyShield enemyShield;
+    
     private IEnumerator _routine;
     
     public void Initialize(Enemy enemy)

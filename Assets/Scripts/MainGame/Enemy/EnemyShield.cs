@@ -7,7 +7,8 @@ public class EnemyShield : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer render;
     [SerializeField] private SpriteRenderer shineRender;
-
+    [SerializeField] private Color activeShieldColor;
+    
     [Header("Appear")]
     [FoldoutGroup("Animations"), SerializeField] private float appearDuration = .5f; 
     [FoldoutGroup("Animations"), SerializeField] private AnimationCurve appearScaleCurve;
@@ -37,10 +38,11 @@ public class EnemyShield : MonoBehaviour
     public void PlayAppearAnimation() => this.PlayCoroutine(ref _routine, AppearAnimation);
     IEnumerator AppearAnimation()
     {
+        Debug.Log("Appear".ApplyColor(UnityStringExtensions.StringColor.White));
         float t = 0;
 
         Color startColor = render.color;
-        Color endColor = new Color(1, 1, 1, 1);
+        Color endColor = activeShieldColor;
         Color endShineColor = new Color(1, 1, 1, 0);
         do
         {
@@ -56,6 +58,7 @@ public class EnemyShield : MonoBehaviour
     public void PlayDisappearAnimation() => this.PlayCoroutine(ref _routine, DisappearAnimation);
     IEnumerator DisappearAnimation()
     {
+        Debug.Log("DisappearAnimation".ApplyColor(UnityStringExtensions.StringColor.White));
         float t = 0;
         Color startColor = render.color;
         Color endColor = new Color(1, 1, 1, 0);
@@ -73,6 +76,7 @@ public class EnemyShield : MonoBehaviour
 
     IEnumerator BlockAnimation()
     {
+        Debug.Log("BlockAnimation".ApplyColor(UnityStringExtensions.StringColor.White));
         float t = 0;
         Color endColor = new Color(1, 1, 1, 0);
         do
@@ -88,6 +92,7 @@ public class EnemyShield : MonoBehaviour
     public void PlayBreakAnimation() => this.PlayCoroutine(ref _routine, BreakAnimation);
     IEnumerator BreakAnimation()
     {
+        Debug.Log("BreakAnimation".ApplyColor(UnityStringExtensions.StringColor.White));
         float t = 0;
         Color endColor = new Color(1, 1, 1, 0);
         Color startShineColor = shineRender.color; 

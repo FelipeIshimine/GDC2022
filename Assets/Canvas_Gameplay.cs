@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,9 @@ public class Canvas_Gameplay : BaseMonoSingleton<Canvas_Gameplay>
 
     public HandContainerUI handContainer;
 
+    [SerializeField] private TurnChangeUI turnChangeUI;
+    public TurnChangeUI TurnChange => turnChangeUI;
+    
     public TextMeshProUGUI actionPointsText;
     public TextMeshProUGUI life;
     public TextMeshProUGUI block;
@@ -20,8 +24,10 @@ public class Canvas_Gameplay : BaseMonoSingleton<Canvas_Gameplay>
     public Image healthFill;
     public Color healthColor;
     public Color armorColor;
-    
-    
+
+    private float _targetValue;
+    [SerializeField] private float _smooth = .2f;
+    private float _vel;
     public GameObject winScreen;
     public GameObject loseScreen;
 
@@ -47,7 +53,7 @@ public class Canvas_Gameplay : BaseMonoSingleton<Canvas_Gameplay>
             Instance.blockAnimatedContainer.Close();
         }
         
-        Instance.slider.value = (float)player.Health / player.MaxHealth;
+        Instance._targetValue = (float)player.Health / player.MaxHealth;
     }
 
     public void Next()
@@ -59,4 +65,11 @@ public class Canvas_Gameplay : BaseMonoSingleton<Canvas_Gameplay>
     {
         OnRetryRequest?.Invoke();
     }
+
+    public void Update()
+    {
+        Instance.slider.value = Mathf.SmoothDamp(Instance.slider.value, _targetValue, ref _vel, _smooth);
+    }
+
+  
 }

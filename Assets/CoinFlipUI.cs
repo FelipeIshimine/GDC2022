@@ -15,14 +15,12 @@ public class CoinFlipUI : BaseMonoSingleton<CoinFlipUI>
     private bool _head;
 
     public float endShowCoinDuration = 3;
-
     
     public float startShowCoinDuration = 1;
     public float showCoinDuration = 2.5f;
     public float startShowCoinPauseDuration = 1;
     public AnimationCurve showRotationCurve;
 
-    
     private IEnumerator _routine;
     private Action _callback;
     [SerializeField] private CoinEntity coinEntity;

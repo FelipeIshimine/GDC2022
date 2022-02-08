@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &860555799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860555800}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860555800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860555799}
+  m_LocalRotation: {x: -0.13898747, y: -0, z: -0, w: 0.99029416}
+  m_LocalPosition: {x: 0, y: -2.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1786688196}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -15.979, y: 0, z: 0}
 --- !u!1 &943859334
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +105,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 7f45691375670fb4cabdb0eeab8a9c15, type: 3}
-  m_Color: {r: 0.5235849, g: 1, b: 0.93325025, a: 0.90588236}
+  m_Color: {r: 0.5235849, g: 1, b: 0.93325025, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   render: {fileID: 943859336}
   shineRender: {fileID: 3454888644306764751}
+  activeShieldColor: {r: 0.5235849, g: 1, b: 0.93325025, a: 0.90588236}
   appearDuration: 0.35
   appearScaleCurve:
     serializedVersion: 2
@@ -382,7 +413,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 860555800}
   m_Father: {fileID: 943859335}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -468,9 +500,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 5
+      minMaxState: 3
+      scalar: 0.75
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -522,8 +554,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
-      minScalar: 3
+      scalar: 15
+      minScalar: -3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -960,7 +992,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1020,7 +1052,7 @@ ParticleSystem:
     radiusThickness: 0
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: -45}
+    m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -1157,7 +1189,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 270
+      value: 360
       mode: 3
       spread: 0
       speed:
@@ -1329,7 +1361,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 120
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1548,7 +1580,7 @@ ParticleSystem:
     enabled: 0
     x:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -1601,7 +1633,7 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -1654,9 +1686,9 @@ ParticleSystem:
         m_RotationOrder: 4
     curve:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.7853982
-      minScalar: 0.7853982
+      minMaxState: 3
+      scalar: -12.56637
+      minScalar: 12.56637
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3793,7 +3825,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
     separateAxes: 0
   RotationBySpeedModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 3
@@ -4022,7 +4054,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 0
     collisionMode: 0
@@ -4030,7 +4062,8 @@ ParticleSystem:
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    m_Planes: []
+    m_Planes:
+    - {fileID: 860555800}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -5367,7 +5400,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 4310339843000390112}
+  m_Father: {fileID: 5200503951025344813}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2838127657932869897
@@ -5431,6 +5464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2838127658123608986}
   - component: {fileID: 2838127658123608987}
+  - component: {fileID: 6601736162495821866}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5475,8 +5509,75 @@ MonoBehaviour:
   effectIcon: {fileID: 2838127658383638435}
   effectText: {fileID: 2838127658024423101}
   shield: {fileID: 4882207978862232675}
+  attack: {fileID: 6601736162495821866}
   blockUI: {fileID: 2623017988854020992}
---- !u!1 &8295479131450188542
+--- !u!114 &6601736162495821866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838127658123608984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fec37ce73534324af54c47ce7f3ec4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.4
+  attackScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.5285369
+      outSlope: -0.5285369
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3755824
+      value: 0.80149084
+      inSlope: -0.0073911087
+      outSlope: -0.0073911087
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.7375519
+    - serializedVersion: 3
+      time: 0.55336183
+      value: 0.802417
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7457563
+      value: 1.1570243
+      inSlope: 0.08787022
+      outSlope: 0.08787022
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  target: {fileID: 2838127658123608986}
+  applyPoint: 0.75
+--- !u!1 &5506074035364425132
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5484,38 +5585,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4310339843000390112}
-  - component: {fileID: 857093673122072439}
+  - component: {fileID: 5200503951025344813}
+  - component: {fileID: 4395864466828176880}
   m_Layer: 0
-  m_Name: RendererPivot
+  m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4310339843000390112
+--- !u!4 &5200503951025344813
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8295479131450188542}
+  m_GameObject: {fileID: 5506074035364425132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2838127657932869910}
-  - {fileID: 3143475021871361141}
-  m_Father: {fileID: 2838127658123608986}
+  m_Father: {fileID: 4310339843000390112}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &857093673122072439
+--- !u!114 &4395864466828176880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8295479131450188542}
+  m_GameObject: {fileID: 5506074035364425132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d1839476e4d7d1468ef72dc45b05791, type: 3}
@@ -5556,6 +5656,38 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 1
     m_RotationOrder: 4
+--- !u!1 &8295479131450188542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4310339843000390112}
+  m_Layer: 0
+  m_Name: RendererPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4310339843000390112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8295479131450188542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5200503951025344813}
+  - {fileID: 3143475021871361141}
+  m_Father: {fileID: 2838127658123608986}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9222823284431264898
 GameObject:
   m_ObjectHideFlags: 0
@@ -5681,6 +5813,10 @@ PrefabInstance:
     - target: {fileID: 2686965824033559657, guid: 9e89ff05ead1f184db14e97ea96f88ce, type: 3}
       propertyPath: m_Name
       value: Canvas Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686965824033559661, guid: 9e89ff05ead1f184db14e97ea96f88ce, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2686965824433816034, guid: 9e89ff05ead1f184db14e97ea96f88ce, type: 3}
       propertyPath: m_AnchorMax.y

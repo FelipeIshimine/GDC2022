@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +15,8 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
     
     public TextMeshProUGUI effectText;
     public EnemyShield shield;
+    public EnemyAttack attack;
+    
     public BlockUI blockUI;
 
     private bool IsOnTurn => _enemy.IsOnTurn;
@@ -52,27 +54,26 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
         {
             if (IsOnTurn)
             {
-                int defenseValue = Stats[StatsManager.Defense.Id]; 
-                if (defenseValue == 0 && amount<0)
-                    shield.PlayBreakAnimation();
-                else
+                int defenseValue = Stats[StatsManager.Defense.Id];
+                if(defenseValue > 0)
                 {
                     if (amount < 0)
                         shield.PlayBlockAnimation();
+                    else if (amount > 0)
+                        shield.PlayAppearAnimation();
                 }
+                else if(amount<0)
+                {
+                    shield.PlayBreakAnimation();
+                }
+
             }
-            else if (Stats[StatsManager.Defense.Id] == 0)
-            {
-                if( amount<0)
-                    shield.PlayDisappearAnimation();
-                else
-                    shield.PlayAppearAnimation();
-            }
+            else if (Stats[StatsManager.Defense.Id] == 0 && amount < 0)
+                shield.PlayDisappearAnimation();
         }
+
         blockUI.SetValue(GetStat(StatsManager.Defense));
-
     }
-
 
     private void EffectSelected(BattleEffect battleEffect)
     {
@@ -82,5 +83,5 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
         effectText.text = CoinManager.TierValues[_enemy.SelectedTier].ToString();
     }
 
-
+    public void Attack(Action applyCallback, Action callback) => attack.Play(applyCallback, callback);
 }

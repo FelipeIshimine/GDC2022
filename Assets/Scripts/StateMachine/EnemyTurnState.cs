@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 
 internal class EnemyTurnState : AsyncState
@@ -18,18 +19,24 @@ internal class EnemyTurnState : AsyncState
         _endTurnCallback = endTurnCallback;
     }
 
-    protected override void Enter()
+    protected override async void Enter()
     {
         _enemy.Set(StatsManager.Defense, 0);
         _enemy.Set(StatsManager.Speed, 0);
 
         foreach (BattleUnit battleUnit in _units)
             battleUnit.TurnStarted();
+
+        await Task.Yield();
         
-        _enemy.SelectedEffect.Apply(_enemy,_player, _enemy.SelectedTier);
+        await _enemy.SelectedEffect.ApplyAsync(_enemy,_player, _enemy.SelectedTier);
+        
         _enemy.ClearEffect();
         EndTurn();
     }
+    
+    
+    
 
     protected override void Exit()
     {

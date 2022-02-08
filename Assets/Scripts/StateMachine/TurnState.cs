@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class TurnState : AsyncState
 {
@@ -20,10 +21,23 @@ public class TurnState : AsyncState
 
     protected override void Enter()
     {
+        string text = _turnType == TurnType.Enemy ? "ENEMY'S TURN":"YOUR TURN";
+        Canvas_Gameplay.Instance.TurnChange.Play(text, GoToTurn);
+    }
+
+    private void GoToTurn()
+    {
+        Debug.Log("A");
         if (_turnType == TurnType.Enemy)
-            SwitchState(new EnemyTurnState(_units, _units[0], (Enemy)_units[1], _onQuitCallback,  _onDoneCallback));
+        {
+            Debug.Log("B");
+            SwitchState(new EnemyTurnState(_units, _units[0], (Enemy)_units[1], _onQuitCallback, _onDoneCallback));
+        }
         else
-            SwitchState(new PlayerTurnState(_units, _units[0], (Enemy)_units[1], _deckBattleData, _onQuitCallback, _onDoneCallback));
+        {
+            Debug.Log("C");
+            SwitchState(new PlayerTurnState(_units, _units[0], (Enemy)_units[1], _deckBattleData, _onQuitCallback,
+                _onDoneCallback));}
     }
 
     protected override void Exit()

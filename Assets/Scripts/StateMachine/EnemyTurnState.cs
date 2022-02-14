@@ -19,7 +19,7 @@ internal class EnemyTurnState : AsyncState
         _endTurnCallback = endTurnCallback;
     }
 
-    protected override async void Enter()
+    protected override void Enter()
     {
         _enemy.Set(StatsManager.Defense, 0);
         _enemy.Set(StatsManager.Speed, 0);
@@ -27,9 +27,11 @@ internal class EnemyTurnState : AsyncState
         foreach (BattleUnit battleUnit in _units)
             battleUnit.TurnStarted();
 
-        await Task.Yield();
-        
-        await _enemy.SelectedEffect.ApplyAsync(_enemy,_player, _enemy.SelectedTier);
+        _enemy.SelectedEffect.ApplyWithAnimation(_enemy,_player, _enemy.SelectedTier,Done);
+    }
+
+    private void Done()
+    {
         
         _enemy.ClearEffect();
         EndTurn();

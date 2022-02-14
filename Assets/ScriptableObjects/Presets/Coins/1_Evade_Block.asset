@@ -9,24 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e00abbe1d8143ff92589a8479702cc7, type: 3}
-  m_Name: EnemyPreset 3
+  m_Script: {fileID: 11500000, guid: f7970dd07ed543f781e127cf9a6db2cd, type: 3}
+  m_Name: 1_Evade_Block
   m_EditorClassIdentifier: 
-  tierRange: {x: 1, y: 4}
-  stats: {fileID: 11400000, guid: bbc6b6c8a1632ae42865828ea1fa538f, type: 2}
-  effects:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  sprite: {fileID: 21300000, guid: 72c8c1ced30a1fd4cbca4fffede563fa, type: 3}
+  coin:
+    id: 0
   references:
     version: 1
     00000000:
-      type: {class: AttackEffect, ns: , asm: Assembly-CSharp}
+      type: {class: Coin, ns: , asm: Assembly-CSharp}
+      data:
+        tier: 1
+        headEffect:
+          id: 1
+        tailEffect:
+          id: 2
     00000001:
       type: {class: EvadeEffect, ns: , asm: Assembly-CSharp}
     00000002:
       type: {class: BlockEffect, ns: , asm: Assembly-CSharp}
-    00000003:
-      type: {class: AttackEffect, ns: , asm: Assembly-CSharp}

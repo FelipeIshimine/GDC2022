@@ -17,6 +17,9 @@ public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
     public Bounds playArea;
     public Bounds discardArea;
 
+    public AudioSource discardSound;
+    public AudioSource playSound;
+    public CanvasGroup canvasGroup;
     protected override void Awake()
     {
         base.Awake();
@@ -26,6 +29,7 @@ public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
     [Button]
     public void Initialize(int count)
     {
+        gameObject.SetActive(true);
         slots ??= new List<CoinSlot>();
 
         int difference = count - slots.Count;
@@ -62,13 +66,14 @@ public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
     private void DiscardFrom(CoinSlot slot)
     {
         slot.HideCoin();
+        discardSound.Play();
         OnDiscardRequest?.Invoke(slots.IndexOf(slot));
-        
     }
 
     private void PlayFrom(CoinSlot slot)
     {
         slot.HideCoin();
+        playSound.Play();
         OnPlayRequest?.Invoke(slots.IndexOf(slot));
     }
     
@@ -91,4 +96,14 @@ public class HandContainerUI : BaseMonoSingleton<HandContainerUI>
         Gizmos.color = new Color(Color.red.r,Color.red.g,Color.red.b, .2f);
         Gizmos.DrawCube(discardArea.center,discardArea.size);
     }
+
+    public void Disable() => canvasGroup.interactable = false;
+    public void Enable() => canvasGroup.interactable = true;
+
+    public void Terminate()
+    {
+        gameObject.SetActive(false);
+    }
+
+   
 }

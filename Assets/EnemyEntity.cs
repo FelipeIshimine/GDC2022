@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,9 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
     public TextMeshProUGUI effectText;
     public EnemyShield shield;
     public EnemyAttack attack;
+    public EnemyDamage damage;
+    public EnemyDodge dodge;
+    public EnemyMiss miss;
     
     public BlockUI blockUI;
 
@@ -49,6 +53,12 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
         {
             healthText.text = $"{_enemy.Health}/{_enemy.MaxHealth}";
             healthSlider.value = (float)_enemy.Health / _enemy.MaxHealth;
+
+            if (amount < 0)
+                damage.Play();
+            else if (amount == 0 && IsOnTurn)
+                dodge.Play();
+                
         }
         else if (id == StatsManager.Defense.Id)
         {
@@ -84,4 +94,6 @@ public class EnemyEntity : BaseMonoSingleton<EnemyEntity>
     }
 
     public void Attack(Action applyCallback, Action callback) => attack.Play(applyCallback, callback);
+
 }
+

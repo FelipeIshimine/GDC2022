@@ -10,23 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e00abbe1d8143ff92589a8479702cc7, type: 3}
-  m_Name: EnemyPreset 2
+  m_Name: EnemyPreset 4
   m_EditorClassIdentifier: 
-  tierRange: {x: 1, y: 3}
-  stats: {fileID: 11400000, guid: 40e886481e9175045a4fb958b92eb208, type: 2}
+  tierRange: {x: 4, y: 5}
+  stats: {fileID: 11400000, guid: 58e34646f831e72498acf4eddfcf741f, type: 2}
   effects:
   - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  sprite: {fileID: 21300000, guid: 0d31d64a1df9c6b4dab7b1a569e0cfc6, type: 3}
+  sprite: {fileID: 21300000, guid: 77ebc56829d123a4482d6093caea3223, type: 3}
   references:
     version: 1
     00000000:
-      type: {class: AttackEffect, ns: , asm: Assembly-CSharp}
-    00000001:
-      type: {class: BlockEffect, ns: , asm: Assembly-CSharp}
-    00000002:
-      type: {class: AttackEffect, ns: , asm: Assembly-CSharp}
-    00000003:
       type: {class: EvadeEffect, ns: , asm: Assembly-CSharp}

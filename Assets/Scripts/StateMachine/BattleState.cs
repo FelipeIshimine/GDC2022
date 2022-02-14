@@ -85,18 +85,23 @@ internal class BattleState : AsyncState
     
     [Button] private void GoToWin()
     {
+        Canvas_Gameplay.HandContainer.Terminate();
         SwitchState(new WinState(_continueCallback));
     }
     
     [Button] private void GoToLose()
     {
+        Canvas_Gameplay.HandContainer.Terminate();
         SwitchState(new LoseState(_backToMenuCallback));
     }
 
-    private void OnPlayerStatsModify(string arg1, int arg2)
+    private void OnPlayerStatsModify(string id, int amount)
     {
         Debug.Log("Refresh");
         Canvas_Gameplay.Refresh(_playerUnit, _deckBattleData);
+
+        if (id == StatsManager.Health && amount == 0)
+            EnemyEntity.Instance.miss.Play();
     }
     
     //public void GoToPlaying() => SwitchState(new PlayingState(GoToPause));

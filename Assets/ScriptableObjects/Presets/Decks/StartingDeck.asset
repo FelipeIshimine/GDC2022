@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: StartingDeck
   m_EditorClassIdentifier: 
   coinPairs:
-  - coinPreset: {fileID: 11400000, guid: 1ddfb8455ab6045418dbecfe32708f3e, type: 2}
+  - coinPreset: {fileID: 11400000, guid: a9185aad9e85f2543b8115ee34822aa8, type: 2}
     amount: 5
-  - coinPreset: {fileID: 11400000, guid: b12e607674b141d4c870b773c9fb2fe6, type: 2}
+  - coinPreset: {fileID: 11400000, guid: 211b84b832e3d3543a3e61ea38c497d9, type: 2}
     amount: 5
-  - coinPreset: {fileID: 11400000, guid: e07786e456ffb914caf516d26373dcf9, type: 2}
+  - coinPreset: {fileID: 11400000, guid: d488e23a68320184ba222d1f39392ada, type: 2}
     amount: 5
-  - coinPreset: {fileID: 11400000, guid: 725ff2eca9dd32042bf402d007fcf50f, type: 2}
-    amount: 2
-  - coinPreset: {fileID: 11400000, guid: e07786e456ffb914caf516d26373dcf9, type: 2}
-    amount: 2
-  - coinPreset: {fileID: 11400000, guid: eff7351d8af7c4443909e377aa0055bc, type: 2}
-    amount: 2
+  - coinPreset: {fileID: 11400000, guid: 5df169130edb3694c8384a51c47cbf98, type: 2}
+    amount: 4
+  - coinPreset: {fileID: 11400000, guid: 9272ebde4736e0e4bb3f70797eac6864, type: 2}
+    amount: 4
+  - coinPreset: {fileID: 11400000, guid: 7660bc0e0b53789468af7201c479f391, type: 2}
+    amount: 4
+  - coinPreset: {fileID: 11400000, guid: 19afdf6e610253b458c4907342b439b1, type: 2}
+    amount: 3
+  - coinPreset: {fileID: 11400000, guid: 51f32f78962524544bf809afceec6970, type: 2}
+    amount: 3
+  - coinPreset: {fileID: 11400000, guid: 88fb2274f5e23c14e80ce6907ad56b6d, type: 2}
+    amount: 3

@@ -26,6 +26,7 @@ public class CoinSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public float rotationSpeed = 180;
     private IEnumerator _routine;
 
+    public AudioSource clickSound;
 
     
     [SerializeField] private CoinEntity coinEntity;
@@ -147,30 +148,29 @@ public class CoinSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(_active != null) return;
+        if(_active != null || !coinEntity.gameObject.activeSelf) return;
         CoinHover(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(_active != null) return;
+        if(_active != null || !coinEntity.gameObject.activeSelf) return;
         CoinHover(false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("PointerDown");
-        if (_active != null) return;
+        if (_active != null || !coinEntity.gameObject.activeSelf) return;
         if(_routine != null)
             StopCoroutine(_routine);
         _active = this;
+        
+        clickSound.Play();
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Pointer Up");
-
-        if(_active != this) return;
+        if(_active != this || !coinEntity.gameObject.activeSelf) return;
 
         _active = null;
         coinEntity.DropCoin();

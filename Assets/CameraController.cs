@@ -1,6 +1,7 @@
 using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraController : BaseMonoSingleton<CameraController>
 {
@@ -8,12 +9,15 @@ public class CameraController : BaseMonoSingleton<CameraController>
     [SerializeField] private float dDuration =1;
     [SerializeField] private float dScale = 1;
     [SerializeField] private float dSpeed = 1;
+    [SerializeField] private PhysicsRaycaster physicsRaycaster;
     
     private float _duration;
     private float _scale;
     private float _speed;
 
     private IEnumerator _routine;
+
+    public static void SetRaycast(bool value) => Instance.physicsRaycaster.enabled = value;
     
     [Button]
     public static void Shake() => Shake(Instance.dDuration, Instance.dScale, Instance.dSpeed);

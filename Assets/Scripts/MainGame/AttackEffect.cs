@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AttackEffect : BattleEffect
 {
@@ -13,25 +15,31 @@ public class AttackEffect : BattleEffect
         var attackAmount = source.Attack + CoinManager.TierValues[tier];
         var defenceAmount = target.Defense;
 
-        int healthDamage = Mathf.Min(defenceAmount - attackAmount, 0);
-        int armorDamage = Mathf.Min(defenceAmount, attackAmount);
-        
-        target.Modify(StatsManager.Defense, -armorDamage);
-        target.Modify(StatsManager.Health, healthDamage);
-    }
+        var value = Random.Range(0, 100);
+        bool hit = value > target.Speed;
 
-    public override async Task ApplyAsync(BattleUnit source, BattleUnit target, int tier)
-    {
-        if (source is Enemy)
+        if (hit)
         {
-            bool isReady = false;
-            void SetReady() => isReady = true;
-            EnemyEntity.Instance.Attack(()=> Apply(source,target,tier) ,SetReady);
-            while (!isReady)
-                await Task.Yield();
+            Debug.Log("HIT");
+            int healthDamage = Mathf.Min(defenceAmount - attackAmount, 0);
+            int armorDamage = Mathf.Min(defenceAmount, attackAmount);
+        
+            target.Modify(StatsManager.Defense, -armorDamage);
+            target.Modify(StatsManager.Health, healthDamage); 
         }
         else
-            await base.ApplyAsync(source, target, tier);
+        {
+            Debug.Log("DODGE");
+            target.Modify(StatsManager.Health, 0);
+        } 
+    }
+
+    public override void ApplyWithAnimation(BattleUnit source, BattleUnit target, int tier, Action callback)
+    {
+        if (source is Enemy)
+            EnemyEntity.Instance.Attack(()=> Apply(source,target,tier), callback);
+        else
+            base.ApplyWithAnimation(source, target, tier, callback);
     }
 
 }

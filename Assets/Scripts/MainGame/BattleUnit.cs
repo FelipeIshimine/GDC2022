@@ -18,6 +18,7 @@ public class BattleUnit
     public int Health => Get(StatsManager.Health.Id);
     public int Attack => Get(StatsManager.Attack.Id);
     public int Defense => Get(StatsManager.Defense.Id);
+    public int Speed => Get(StatsManager.Speed.Id);
     public int HandSize => Get(StatsManager.HandSize.Id);
     public int MaxActionPoints => Get(StatsManager.MaxActionPoints.Id);
     public int MaxHealth => Get(StatsManager.MaxHealth.Id);
@@ -25,7 +26,7 @@ public class BattleUnit
     #endregion
 
     public bool IsOnTurn { get; private set; }
-    
+
     public BattleUnit(StatsPreset statsPreset)
     {
         Stats = statsPreset.Create();

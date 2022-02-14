@@ -7,8 +7,7 @@ using UnityEngine.AddressableAssets;
 public class EnemyPreset : ScriptableObject
 {
     [MinMaxSlider(0,5,true)]public Vector2Int tierRange = new Vector2Int(0,5);
-    public StatsPreset stats;
+    [InlineEditor] public StatsPreset stats;
     [SerializeReference] public List<BattleEffect> effects = new List<BattleEffect>(); 
-    public AssetReferenceGameObject prefabReference;
     public Sprite sprite;
 }

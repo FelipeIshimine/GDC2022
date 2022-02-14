@@ -1,5 +1,6 @@
 ﻿using System;
 using Sirenix.OdinInspector;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 public class MainGameState : AsyncState
@@ -30,5 +31,25 @@ public class MainGameState : AsyncState
     {
         _playerData.LevelId++;
         SwitchState(new BattleState(_playerData, _retryCallback, GoToNextBattle));
+    }
+
+    private void GoToEndingState()
+    {
+        SwitchState(new EndingState());
+    }
+}
+
+internal class EndingState : AsyncState
+{
+    public EndingState() : base(ScenesSettings.EndingScene, LoadSceneMode.Single)
+    {
+    }
+
+    protected override void Enter()
+    {
+    }
+
+    protected override void Exit()
+    {
     }
 }

@@ -32,6 +32,7 @@ internal class PlayerTurnState : AsyncState
         _playerUnit.Set(StatsManager.Defense, 0);
         _playerUnit.Set(StatsManager.Speed, 0);
         
+        
         foreach (BattleUnit battleUnit in _units)
             battleUnit.TurnStarted();
         
@@ -40,13 +41,13 @@ internal class PlayerTurnState : AsyncState
         _enemyUnit.SelectEffect();
         
         _playerUnit.Set(StatsManager.ActionPoints, _playerUnit.MaxActionPoints);
-
+        
         GoToCoinSelectionState();
     }
 
     private void RefreshHand()
     {
-        var handContainer = Canvas_Gameplay.Instance.handContainer;
+        var handContainer = Canvas_Gameplay.HandContainer;
         handContainer.Initialize(_playerUnit.HandSize);
         var hand = _deckBattleData.Hand;
         int difference = _playerUnit.HandSize - hand.Count;
@@ -61,6 +62,7 @@ internal class PlayerTurnState : AsyncState
 
     protected override void Exit()
     {
+        Canvas_Gameplay.HandContainer.Disable();
     }
     
     private void GoToCoinSelectionState()
@@ -68,7 +70,7 @@ internal class PlayerTurnState : AsyncState
         if(_playerUnit.ActionPoints == 0 || _enemyUnit.Health <= 0 || _playerUnit.Health == 0)
             EndTurn();
         else
-            SwitchState(new CoinSelectionState(_deckBattleData, _playerUnit.HandSize, CoinSelected, CoinDiscard));
+            SwitchState(new CoinSelectionState(_deckBattleData, _playerUnit.HandSize, EndTurn, CoinSelected, CoinDiscard));
     }
 
     private void CoinDiscard(int index)

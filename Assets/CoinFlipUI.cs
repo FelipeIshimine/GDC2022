@@ -24,6 +24,8 @@ public class CoinFlipUI : BaseMonoSingleton<CoinFlipUI>
     private IEnumerator _routine;
     private Action _callback;
     [SerializeField] private CoinEntity coinEntity;
+
+    public AudioSource tableHitSound;
     
     public void SetCoin(Coin coin)
     {
@@ -71,7 +73,7 @@ public class CoinFlipUI : BaseMonoSingleton<CoinFlipUI>
             yield return null;
         } while (t<1);
 
-
+        tableHitSound.Play();
         yield return new WaitForSeconds(endShowCoinDuration);
         
         coinEntity.gameObject.SetActive(false);

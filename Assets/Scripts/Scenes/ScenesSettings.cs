@@ -10,10 +10,12 @@ public class ScenesSettings : RuntimeScriptableSingleton<ScenesSettings>
 
     public AssetReference mainMenu;
     public AssetReference mainGame;
+    public AssetReference ending;
 
     public static AssetReference MainMenu => Instance.mainMenu;
     public static AssetReference MainGame => Instance.mainGame;
     public static AssetReference[] Levels => Instance.levels;
+    public static AssetReference EndingScene => Instance.ending;
 
     public static AssetReference GetLevelReference(int index) => Instance.levels[index];
 

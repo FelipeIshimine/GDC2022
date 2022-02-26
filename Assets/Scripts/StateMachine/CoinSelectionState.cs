@@ -49,7 +49,12 @@ internal class CoinSelectionState : AsyncState
 
     private void EndTurn() => _endTurnCallback();
 
-    [Button] private void DiscardCoin(int obj) => _coinDiscardCallback(obj);
-
+    [Button]
+    private void DiscardCoin(int obj)
+    {
+        if(_deckBattleData.IsDeckEmpty() && _deckBattleData.IsDiscardEmpty())
+            return;
+        _coinDiscardCallback(obj);
+    } 
     [Button] public void PlayCoin(int index) => _coinSelectedCallback(index);
 }

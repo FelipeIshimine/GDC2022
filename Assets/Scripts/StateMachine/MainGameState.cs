@@ -30,7 +30,10 @@ public class MainGameState : AsyncState
     [Button] private void GoToNextBattle()
     {
         _playerData.LevelId++;
-        SwitchState(new BattleState(_playerData, _retryCallback, GoToNextBattle));
+        if (_playerData.LevelId >= 3)
+            GoToEndingState();
+        else
+            SwitchState(new BattleState(_playerData, _retryCallback, GoToNextBattle));
     }
 
     private void GoToEndingState()

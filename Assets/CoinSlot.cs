@@ -28,6 +28,8 @@ public class CoinSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public AudioSource clickSound;
 
+    private Vector3 _vel;
+
     
     [SerializeField] private CoinEntity coinEntity;
 
@@ -129,8 +131,9 @@ public class CoinSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void PositionAtMouse()
     {
         float z = coinEntity.transform.position.z;
-        coinEntity.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        coinEntity.transform.position = Vector3.SmoothDamp(coinEntity.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition),ref _vel, .025f);
         coinEntity.transform.position = new Vector3(coinEntity.transform.position.x, coinEntity.transform.position.y, z);
+        coinEntity.transform.rotation = Quaternion.Slerp(coinEntity.transform.rotation, Quaternion.identity , .1f);
     }
 
     public void ResetCoinPosition()
